@@ -15,6 +15,16 @@ namespace TestREST
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowVueApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5292")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddSingleton<RecordRepositoryList>(new RecordRepositoryList());
 
             var app = builder.Build();
