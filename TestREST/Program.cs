@@ -1,4 +1,6 @@
 
+using TestREST.Models;
+
 namespace TestREST
 {
     public class Program
@@ -12,6 +14,8 @@ namespace TestREST
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            builder.Services.AddSingleton<RecordRepositoryList>(new RecordRepositoryList());
 
             var app = builder.Build();
 
