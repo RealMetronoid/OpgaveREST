@@ -75,12 +75,12 @@ namespace RecordUnitTest
 
             // Define the expected order of titles
             List<string> expectedTitles = new()
-    {
-        "Hearts and minds",
-        "Kojak",
-        "Mad in love",
-        "Still human"
-    };
+            {
+                "Hearts and minds",
+                "Kojak",
+                "Mad in love",
+                "Still human"
+            };
 
             // Extract titles from the actual result
             var actualTitles = titleRecords.Select(r => r.Title).ToList();
