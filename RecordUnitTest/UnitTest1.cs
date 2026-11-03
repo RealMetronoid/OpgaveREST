@@ -67,7 +67,29 @@ namespace RecordUnitTest
         }
 
         [Fact]
-        public void GetAllRecords_SortBy()
+        public void GetAllRecords_SortBy1()
+        {
+            repo = new RecordRepositoryList(includeData: true);
+
+            var titleRecords = repo.GetAllRecords(sortBy: "title");
+
+            // Define the expected order of titles
+            List<string> expectedTitles = new()
+    {
+        "Hearts and minds",
+        "Kojak",
+        "Mad in love",
+        "Still human"
+    };
+
+            // Extract titles from the actual result
+            var actualTitles = titleRecords.Select(r => r.Title).ToList();
+
+            Assert.Equal(expectedTitles, actualTitles);
+        }
+
+        [Fact]
+        public void GetAllRecords_SortBy2()
         {
             repo = new RecordRepositoryList(includeData: true);
 
@@ -80,7 +102,7 @@ namespace RecordUnitTest
             //    new Record { Title = "Kojak", Artist = "One Republic", Duration = 400, publicationYear = 2026, Listeners = 2000 }
             //];
 
-            IEnumerable<Record>sorted_list = [
+            IEnumerable<Record> sorted_list = [
                 new Record {Id = 3, Title = "Hearts and minds", Artist = "Kale Eaters", Duration = 200, publicationYear = 2020, Listeners = 50 },
                 new Record {Id = 4, Title = "Kojak", Artist = "One Republic", Duration = 400, publicationYear = 2026, Listeners = 2000 },
                 new Record {Id = 1, Title = "Mad in love", Artist = "Progressive Metal", Duration = 300, publicationYear = 2023, Listeners = 1000 },
