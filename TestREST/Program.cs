@@ -45,6 +45,8 @@ namespace TestREST
 
             app.UseAuthorization();
 
+            // Use the CORS policy
+            app.UseCors("AllowVueApp");
 
             app.MapControllers();
 
