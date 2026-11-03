@@ -6,6 +6,17 @@
 
         private int nextId = 1;
 
+        public RecordRepositoryList(bool includeData = true)
+        {
+            if (includeData)
+            {
+                AddRecord(new Record { Title = "Mad in love", Artist = "Progressive Metal", Duration = 300, publicationYear = 2023, Listeners = 1000 });
+                AddRecord(new Record { Title = "Still human", Artist = "Daft Punk", Duration = 350, publicationYear = 2016, Listeners = 100000 });
+                AddRecord(new Record { Title = "Hearts and minds", Artist = "Kale Eaters", Duration = 200, publicationYear = 2020, Listeners = 50 });
+                AddRecord(new Record { Title = "Kojak", Artist = "One Republic", Duration = 400, publicationYear = 2026, Listeners = 2000 });
+            }
+        }
+
 
         public IEnumerable<Record> GetAllRecords()
         {
@@ -19,7 +30,8 @@
 
         public Record AddRecord(Record record)
         {
-            if (record == null) {
+            if (record == null)
+            {
                 throw new ArgumentNullException(nameof(record));
             }
 

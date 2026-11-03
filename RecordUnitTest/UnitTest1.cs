@@ -8,7 +8,7 @@ namespace RecordUnitTest
         private IRecordRepository repo;
         public UnitTest1()
         {
-            repo = new RecordRepositoryList();
+            repo = new RecordRepositoryList(includeData: false);
         }
 
         [Fact]
