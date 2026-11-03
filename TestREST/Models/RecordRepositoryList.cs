@@ -18,7 +18,7 @@
         }
 
 
-        public IEnumerable<Record> GetAllRecords(string title = null, string artist = null, string sortBy = null)
+        public IEnumerable<Record> GetAllRecords(string? title = null, string? artist = null, string? sortBy = null)
         {
             List<Record> tempRecords = new(records);
 
@@ -29,7 +29,7 @@
 
             if (artist != null)
             {
-                tempRecords = tempRecords.FindAll(record => record.Title.StartsWith(title));
+                tempRecords = tempRecords.FindAll(record => record.Artist.StartsWith(artist));
             }
 
             if (sortBy != null)

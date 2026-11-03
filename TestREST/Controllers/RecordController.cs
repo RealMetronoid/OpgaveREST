@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using System.Globalization;
 using TestREST.Models;
 
 namespace TestREST.Controllers
@@ -18,11 +21,11 @@ namespace TestREST.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<IEnumerable<Record>> GetAllRecords()
+        public ActionResult<IEnumerable<Record>> GetRecords([FromQuery]string? title, [FromQuery] string? artist, [FromQuery] string? sortBy)
         {
             try
             {
-                IEnumerable<Record> result = recordRepo.GetAllRecords();
+                IEnumerable<Record> result = recordRepo.GetAllRecords(title, artist, sortBy);
 
                 if (result == null || !result.Any())
                 {
