@@ -69,6 +69,26 @@ namespace RecordUnitTest
         [Fact]
         public void GetAllRecords_SortBy()
         {
+            repo = new RecordRepositoryList(includeData: true);
+
+            var titleRecords = repo.GetAllRecords(sortBy: "title");
+
+            //List<Record> unsorted_list = [
+            //    new Record { Title = "Mad in love", Artist = "Progressive Metal", Duration = 300, publicationYear = 2023, Listeners = 1000 },
+            //    new Record { Title = "Still human", Artist = "Daft Punk", Duration = 350, publicationYear = 2016, Listeners = 100000 },
+            //    new Record { Title = "Hearts and minds", Artist = "Kale Eaters", Duration = 200, publicationYear = 2020, Listeners = 50 },
+            //    new Record { Title = "Kojak", Artist = "One Republic", Duration = 400, publicationYear = 2026, Listeners = 2000 }
+            //];
+
+            IEnumerable<Record>sorted_list = [
+                new Record {Id = 3, Title = "Hearts and minds", Artist = "Kale Eaters", Duration = 200, publicationYear = 2020, Listeners = 50 },
+                new Record {Id = 4, Title = "Kojak", Artist = "One Republic", Duration = 400, publicationYear = 2026, Listeners = 2000 },
+                new Record {Id = 1, Title = "Mad in love", Artist = "Progressive Metal", Duration = 300, publicationYear = 2023, Listeners = 1000 },
+                new Record {Id = 2, Title = "Still human", Artist = "Daft Punk", Duration = 350, publicationYear = 2016, Listeners = 100000 }
+            ];
+
+
+            Assert.Equal(sorted_list, titleRecords);
 
         }
     }
