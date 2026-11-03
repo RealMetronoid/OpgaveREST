@@ -55,5 +55,21 @@ namespace RecordUnitTest
             Assert.Empty(repo.GetAllRecords());
 
         }
+
+        [Fact]
+        public void GetAllRecords_Filtering()
+        {
+            repo = new RecordRepositoryList(includeData: true);
+
+            var titleRecords = repo.GetAllRecords("Still human", "Daft Punk");
+
+            Assert.Equal(1, titleRecords.Count());
+        }
+
+        [Fact]
+        public void GetAllRecords_SortBy()
+        {
+
+        }
     }
 }

@@ -18,9 +18,43 @@
         }
 
 
-        public IEnumerable<Record> GetAllRecords()
+        public IEnumerable<Record> GetAllRecords(string title = null, string artist = null, string sortBy = null)
         {
-            return records.AsReadOnly();
+            List<Record> tempRecords = new(records);
+
+            if (title != null)
+            {
+                tempRecords = tempRecords.FindAll(record => record.Title.StartsWith(title));
+            }
+
+            if (artist != null)
+            {
+                tempRecords = tempRecords.FindAll(record => record.Title.StartsWith(title));
+            }
+
+            if (sortBy != null)
+            {
+                switch (sortBy.ToLower())
+                {
+                    case "id":
+                        tempRecords = tempRecords.OrderBy(record => record.Id).ToList();
+                        break;
+                    case "title":
+                        tempRecords = tempRecords.OrderBy(record => record.Title).ToList();
+                        break;
+                    case "artist":
+                        tempRecords = tempRecords.OrderBy(record => record.Artist).ToList();
+                        break;
+                    case "listnerasc":
+                        tempRecords = tempRecords.OrderBy(record => record.Listeners).ToList();
+                        break;
+                    case "listenerdesc":
+                        tempRecords = tempRecords.OrderByDescending(record => record.Listeners).ToList();
+                        break;
+                }
+            }
+
+            return tempRecords;
         }
 
         public Record? GetRecordById(int id)
