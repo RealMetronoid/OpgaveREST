@@ -1,4 +1,6 @@
 
+using TestREST.Models;
+
 namespace TestREST
 {
     public class Program
@@ -13,7 +15,27 @@ namespace TestREST
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowVueApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5292")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+                });
+            });
+
+            //  Swagger.
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSingleton<RecordRepositoryList>(new RecordRepositoryList());
+
             var app = builder.Build();
+
+            //  Swagger.
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -23,6 +45,8 @@ namespace TestREST
 
             app.UseAuthorization();
 
+            // Use the CORS policy
+            app.UseCors("AllowVueApp");
 
             app.MapControllers();
 
