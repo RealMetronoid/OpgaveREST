@@ -25,9 +25,17 @@ namespace TestREST
                 });
             });
 
+            //  Swagger.
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
             builder.Services.AddSingleton<RecordRepositoryList>(new RecordRepositoryList());
 
             var app = builder.Build();
+
+            //  Swagger.
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
