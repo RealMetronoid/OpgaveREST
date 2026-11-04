@@ -67,7 +67,7 @@ namespace RecordUnitTest
         }
 
         [Fact]
-        public void GetAllRecords_SortBy1()
+        public void GetAllRecords_SortBy_CheckTitlesMatch ()
         {
             repo = new RecordRepositoryList(includeData: true);
 
@@ -89,7 +89,7 @@ namespace RecordUnitTest
         }
 
         [Fact]
-        public void GetAllRecords_SortBy2()
+        public void GetAllRecords_SortBy_EntireList()
         {
             repo = new RecordRepositoryList(includeData: true);
 

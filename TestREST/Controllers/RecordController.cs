@@ -32,7 +32,7 @@ namespace TestREST.Controllers
                     return NoContent(); // Returnerer 204 NoContent hvis listen er tom
                 }
 
-                return Ok(result); // Returnerer 200 OK med listen af Phone
+                return Ok(result); // Returnerer 200 OK med listen af Records
             }
             catch (ArgumentException ex)
             {

@@ -19,7 +19,7 @@ namespace TestREST
             {
                 options.AddPolicy("AllowVueApp", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5292")
+                    policy.AllowAnyOrigin()
                     .AllowAnyHeader()
                     .AllowAnyMethod();
                 });
