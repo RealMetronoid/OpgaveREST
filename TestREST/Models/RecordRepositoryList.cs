@@ -24,12 +24,12 @@
 
             if (title != null)
             {
-                tempRecords = tempRecords.FindAll(record => record.Title.StartsWith(title));
+                tempRecords = tempRecords.FindAll(record => record.Title.Contains(title));
             }
 
             if (artist != null)
             {
-                tempRecords = tempRecords.FindAll(record => record.Artist.StartsWith(artist));
+                tempRecords = tempRecords.FindAll(record => record.Artist.Contains(artist));
             }
 
             if (sortBy != null)
