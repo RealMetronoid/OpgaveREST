@@ -17,7 +17,7 @@ namespace TestREST
 
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowVueApp", policy =>
+                options.AddPolicy("AllowAny", policy =>
                 {
                     policy.AllowAnyOrigin()
                     .AllowAnyHeader()
@@ -46,7 +46,7 @@ namespace TestREST
             app.UseAuthorization();
 
             // Use the CORS policy
-            app.UseCors("AllowVueApp");
+            app.UseCors("AllowAny");
 
             app.MapControllers();
 
